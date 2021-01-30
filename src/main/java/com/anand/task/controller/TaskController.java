@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.anand.task.constants.URLCons;
 import com.anand.task.entity.EmployeeInfo;
+import com.anand.task.log.ConsoleLog;
 import com.anand.task.service.TaskService;
 
 /**
@@ -30,30 +31,35 @@ public class TaskController {
 	@ResponseBody
 	@PostMapping(value = URLCons.GET_EMPLOYEE)
 	public EmployeeInfo getEmployee(@RequestParam int empId) {
+		ConsoleLog.printLogMessage("getEmployee API call");
 		return taskService.getEmployee(empId);
 	}
 
 	@ResponseBody
 	@PostMapping(value = URLCons.LOAD_EMPLOYEE)
-	public List<EmployeeInfo> loadAllEMployee() {
+	public List<EmployeeInfo> loadAllEmployee() {
+		ConsoleLog.printLogMessage("loadAllEmployee API call");
 		return taskService.getAllEmployee();
 	}
 
 	@ResponseBody
 	@PostMapping(value = URLCons.CREATE_EMPLOYEE)
 	public String createEmployee(@ModelAttribute EmployeeInfo employeeInfo) {
+		ConsoleLog.printLogMessage("createEmployee API call");
 		return taskService.createEmployee(employeeInfo);
 	}
 
 	@ResponseBody
 	@PostMapping(value = URLCons.UPDATE_EMPLOYEE)
 	public String updateEmployee(@ModelAttribute EmployeeInfo employeeInfo) {
+		ConsoleLog.printLogMessage("updateEmployee API call");
 		return taskService.updateEmployee(employeeInfo);
 	}
 
 	@ResponseBody
 	@PostMapping(value = URLCons.DELETE_EMPLOYEE)
 	public String deleteEmployee(@RequestParam int empId) {
+		ConsoleLog.printLogMessage("deleteEmployee API call");
 		return taskService.deleteEmployee(empId);
 	}
 }
